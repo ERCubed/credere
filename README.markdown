@@ -359,4 +359,3 @@ Attribution
 
 This work is based mostly off the the Plutus gem and has been modified to remove the namespace issues around the Account model.
 [https://github.com/mbulat/plutus](https://github.com/mbulat/plutus)
-
