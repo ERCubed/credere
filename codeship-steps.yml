@@ -1,0 +1,3 @@
+- name: Tests
+  service: credere
+  command: bundle exec rake

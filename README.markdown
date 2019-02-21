@@ -1,6 +1,5 @@
 credere
 =================
-<!-- [![Build Status](https://travis-ci.org/legalshield/credere.svg?branch=master)](https://travis-ci.org/legalshield/credere) [![Coverage Status](https://coveralls.io/repos/github/legalshield/credere/badge.svg?branch=master)](https://coveralls.io/github/legalshield/credere?branch=master) -->
 
 The credere plugin is a Ruby on Rails Engine which provides a double entry accounting system for your application.
 
@@ -9,8 +8,6 @@ Compatibility
 
 * Ruby versions: MRI 2.2.2+ (should work with earlier versions if using Rails 4)
 * Rails versions: ~> 5.0, ~> 4.0
-
-For earlier versions, and upgrading, please see the section titled [Previous Versions](https://github.com/legalshield/credere#previous-versions)
 
 Installation
 ============
@@ -286,7 +283,7 @@ rake db:migrate
 - Add an initializer to your Rails application, i.e. `config/initializers/credere.rb`
 
 ```ruby
-credere.config do |config|
+Credere.config do |config|
   config.enable_tenancy = true
   config.tenant_class = 'Tenant'
 end
@@ -305,6 +302,29 @@ entry = Credere::Entry.new(
                   {:account => credit_account, :amount => 100.00}])
 ```
 
+If you are pre-seeding a system, or are adding Credere to a system with existing Users (or whatever you are associating your leger entries with) you may wish to consider scripting the creation of your Book of Accounts for all Users.
+
+UUID Support
+============
+
+Not every system supports basic integer IDs for primary keys. By default, Credere uses integers for primary keys, but offers the ability to use UUIDs for the primary keys through the following migration. 
+
+*NOTE: This migration will need to be run _after_ the multitenancy support migration*
+
+```sh
+bundle exec rails g credere:id_to_uuid
+```
+
+- Run the migration
+
+```sh
+rake db:migrate
+```
+
+Credere should now be set up to utilize your UUIDs.
+
+*NOTE: This should be done during initial installation only. Running this at any other time will cause a loss of data.*
+
 Reporting Views
 ===============
 
@@ -312,7 +332,7 @@ The Engine provides controllers and views for rendering basic reports, including
 
 These views and controllers are read-only for reporting purposes. It is assumed entry creation will occur within your applications code.
 
-Routing is supplied via an engine mount point. credere can be mounted on a subpath in your existing Rails 3 app by adding the following to your routes.rb:
+Routing is supplied via an engine mount point. credere can be mounted on a subpath in your existing Rails app by adding the following to your routes.rb:
 
 ```ruby
 mount Credere::Engine => "/credere", :as => "credere"
@@ -320,33 +340,11 @@ mount Credere::Engine => "/credere", :as => "credere"
 
 *NOTE: The `Credere::ApplicationController` does not currently support authentication. If you enable routing, the views will be publicly available on your mount point. Authentication can be added by overriding the controller.*
 
-<!-- *Future versions of Credere will allow for customization of authentication.* -->
-
 
 Previous Versions
 =================
 
-<!-- For the rails 3 version, you can go here:
-
-[https://github.com/legalshield/credere/tree/rails3](https://github.com/legalshield/credere/tree/rails3)
-
-For the rails 2 version, you can go here:
-
-[https://github.com/legalshield/credere/tree/rails2](https://github.com/legalshield/credere/tree/rails2)
-
-* Gems in RubyGems.org >= 0.5.0 support Rails 3
-* Gems in RubyGems.org >= 0.8.0 support Rails 4
-* Gems in RubyGems.org >= 0.9.0 support Rails ~> 4.1 -->
 * Gems in RubyGems.org >= 0.10.0 support Rails ~> 5.0
-
-<!-- Upgrading from older versions
------------------------------
-
-As credere is still in alpha, there have been some breaking changes with previous versions.
-
-If you are upgrading, please check the Wiki for guides on how to properly upgrade credere to deal with the changes:
-
-[Upgrade Notes](https://github.com/legalshield/credere/wiki/Updrade-Notes) -->
 
 Testing
 =======

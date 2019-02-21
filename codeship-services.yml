@@ -1,0 +1,6 @@
+
+credere:
+  build:
+    image: credere
+    dockerfile: Dockerfile
+  cached: true

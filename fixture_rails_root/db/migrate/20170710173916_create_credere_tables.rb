@@ -1,4 +1,4 @@
-class CreatePlutusTables < ActiveRecord::Migration\[5\.2\]
+class CreateCredereTables < ActiveRecord::Migration\[5\.2\]
   def self.up
     create_table :credere_accounts do |t|
       t.string :name

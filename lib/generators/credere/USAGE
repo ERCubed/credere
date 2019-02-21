@@ -10,13 +10,3 @@ Installation:
 
     Once generated, simply run:
         rake db:migrate
-
-Upgrade < 0.8 -> 0.9+:
-    rails g credere:upgrade_credere
-
-    This will:
-        Create a migration in the application for renaming the
-        "Transaction" table, columns and indexes to "Entry" tables.
-        
-    Once generated, simply run:
-        rake db:migrate
