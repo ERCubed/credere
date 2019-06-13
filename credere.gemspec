@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.authors = ["Eric Roberts"]
   s.date = Date.today
   s.description = %q{The Credere plugin provides a complete double entry accounting system for use in any Ruby on Rails application. The plugin follows general Double Entry Bookkeeping practices. All calculations are done using BigDecimal in order to prevent floating point rounding errors. The plugin requires a decimal type on your database as well. It is strongly based off of the Plutus gem.}
-  s.email = %q{ericroberts@legalshieldcorp.com}
+  s.email = %q{eric@ercubed.com}
   s.extra_rdoc_files = [
     "LICENSE",
     "README.markdown"
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency("kaminari", "~> 1.0")
   s.add_development_dependency("yard")
   s.files = Dir["{app,config,db,lib}/**/*"] + ["LICENSE", "Rakefile", "README.markdown"]
-  s.homepage = %q{http://github.com/legalshield/credere}
+  s.homepage = %q{http://github.com/ercubed/credere}
   s.license = 'MIT'
   s.require_paths = ["lib"]
   s.required_rubygems_version = ">= 1.3.6"
